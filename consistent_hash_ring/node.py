@@ -7,7 +7,7 @@ class Node:
     """
     def __init__(self, node_index: int, capacity: str) -> None:
         self.capacity = capacity
-        self.node_index = node_index
+        self.index = node_index
         self.data = dict()
 
     def is_full(self) -> bool:
@@ -30,6 +30,9 @@ class Node:
     def has_key(self, key: str) -> bool:
         return key in self.data
     
+    def list_items(self)->list[Any] | None:
+        return self.data
+
     def import_keys(self, other_node)->None:
         """
         Imports data from other dict.

@@ -9,6 +9,7 @@ class NodeSet:
         node_set_index, node_set_index + 1, ..., node_set_index + replication_factor - 1
         """
         self.nodes: list[Node] = []
+        self.index = node_set_index
         for i in range(replication_factor):
             node_index = node_set_index * replication_factor + i
             self.nodes.append(Node(node_index, nodes_capacity))
@@ -35,6 +36,9 @@ class NodeSet:
         for node in self.nodes:
             node.delete(key)
     
+    def list_nodes(self)->list[Node]:
+        return self.nodes
+
     def update(self, key: str, new_value: Any) -> None | Any:
         # TODO: implement not found error
         old_value = self.get(key)

@@ -1,6 +1,6 @@
 from typing import Any
 from consistent_hash_ring.node_set import NodeSet
-from consistent_hash_ring.binary_search_tree import BinarySearchTree
+from ADT.binary_search_tree import BinarySearchTree
 import hashlib
 
 class Ring:
