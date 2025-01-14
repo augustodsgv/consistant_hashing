@@ -50,10 +50,29 @@ class NodeSet:
         return self.nodes[node_index]
     
     def import_keys(self, other_nodeset: 'NodeSet')->bool:
+        """
+        Imports data from other NodeSet
+        """
         for index, node in enumerate(other_nodeset):
             self.nodes[index].import_keys(node)
         return True
 
+    def export_keys(self, other_nodeset: 'NodeSet')->bool:
+        """
+        Exports data to other NodeSet
+        """
+        for index, node in enumerate(other_nodeset):
+            self.nodes[index].export_keys(node)
+        return True    
+
+    def calc_mid_hash(self)->int:
+        """
+        Calculates the mean of the hash all keys of the node
+        """
+        return sum(map(lambda x: hash(x), self.data.keys())) // len(self.data)
+
+    def is_full(self)->bool:
+        return all([node.is_full() for node in self.nodes])
     @property
     def load(self) -> float:
         return sum([node.load for node in self.nodes]) / len(self.nodes)

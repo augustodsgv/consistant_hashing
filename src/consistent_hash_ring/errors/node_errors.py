@@ -1,0 +1,6 @@
+class KeyDontExists(Exception):
+    ...
+
+class NodeIsFull(Exception):
+    ...
+
