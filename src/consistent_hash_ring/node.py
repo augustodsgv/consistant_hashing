@@ -1,5 +1,6 @@
 from typing import Any
 from src.hash import hash
+from .errors.node_errors import KeyNotFoundError, NodeIsFullError
 
 class Node:
     """
@@ -26,9 +27,9 @@ class Node:
     def insert(self, key: str, value: Any) -> None:
         self.data[key] = value
 
-    def delete(self, key: str) -> Any | None:
+    def delete(self, key: str) -> Any:
         if not self.has_key(key):
-            return None
+            raise KeyNotFoundError(f'Key {key} not found')
         return self.data.pop(key)
 
     def get(self, key: str) -> Any | None:

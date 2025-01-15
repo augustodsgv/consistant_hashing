@@ -1,6 +1,9 @@
-class KeyDontExists(Exception):
+class KeyNotFoundError(Exception):
     ...
 
-class NodeIsFull(Exception):
+class NodeIsFullError(Exception):
+    ...
+
+class KeyAlreadyExistsError(Exception):
     ...
 
